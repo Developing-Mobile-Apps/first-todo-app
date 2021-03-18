@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class TodoActivity extends AppCompatActivity {
 
+    private static final String TODO_INDEX = "todoIndex";
     private String[] mTodos;
     private int mTodoIndex = 0;
 
@@ -22,6 +23,12 @@ public class TodoActivity extends AppCompatActivity {
 
         // set the user interface layout for this Activity
         setContentView(R.layout.activity_todo);
+
+        /* check for saved state due to changes such as rotation
+            and restore any saved state such as the TODO_INDEX */
+        if (savedInstanceState != null) {
+            mTodoIndex = savedInstanceState.getInt(TODO_INDEX, 0);
+        }
 
         // initialize member TextView so we can manipulate it later
         final TextView TodoTextView;
@@ -45,5 +52,16 @@ public class TodoActivity extends AppCompatActivity {
                 TodoTextView.setText(mTodos[mTodoIndex]);
             }
         });
+    }
+
+    /* In case of state change, such as rotating the phone,
+   store the mTodoIndex */
+
+    /* override to write the value of mTodoIndex into
+       the Bundle with TODO_INDEX as its key */
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putInt(TODO_INDEX, mTodoIndex);
     }
 }
