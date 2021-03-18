@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">Android Todo First</string>
 
+    <string-array name="todos">
+        <item>Wake up</item>
+        <item>Drink Coffee</item>
+        <item>Make at least one person laugh</item>
+        <item>Plant a tree</item>
+        <item>Ponder on duality of existance</item>
+        <item>Go to sleep</item>
+    </string-array>
 </resources>
