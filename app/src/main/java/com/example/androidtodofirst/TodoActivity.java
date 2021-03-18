@@ -52,6 +52,21 @@ public class TodoActivity extends AppCompatActivity {
                 TodoTextView.setText(mTodos[mTodoIndex]);
             }
         });
+
+        Button buttonPrev = findViewById(R.id.buttonPrev);
+
+        // OnClick listener for the  Previous button
+        buttonPrev.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mTodoIndex = --mTodoIndex;
+                if (mTodoIndex < 0) {
+                    mTodoIndex = mTodos.length - 1;
+                }
+                TodoTextView.setText(mTodos[mTodoIndex]);
+            }
+        });
+
     }
 
     /* In case of state change, such as rotating the phone,
